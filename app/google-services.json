@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "88902840580",
+    "project_id": "asha-21f6d",
+    "storage_bucket": "asha-21f6d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:88902840580:android:99cd0a20e8b963b226a051",
+        "android_client_info": {
+          "package_name": "com.nyautech.asha"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "88902840580-pkqj8io98s051cdaukqmhg2614fjgdcv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDr8SYhxmkYkfRdaM89gkJ2daE90f-PfEw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "88902840580-pkqj8io98s051cdaukqmhg2614fjgdcv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

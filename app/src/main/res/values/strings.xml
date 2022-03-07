@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Asha</string>
+    <string name="asha">asha</string>
+    <string name="home">Home</string>
+    <string name="home_welcome">Welcome,\n Althea!</string>
+    <string name="app_tagline">You\'re Not Alone</string>
+</resources>
