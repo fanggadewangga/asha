@@ -18,7 +18,7 @@
         android:layout_width="136dp"
         android:layout_height="136dp"
         android:layout_marginTop="32dp"
-        tools:src="@mipmap/ic_launcher"
+        tools:src="@drawable/user_img"
         app:layout_constraintTop_toBottomOf="@id/tv_profile"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>

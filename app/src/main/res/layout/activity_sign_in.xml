@@ -44,6 +44,17 @@
         app:layout_constraintStart_toStartOf="@id/tv_username"/>
 
     <TextView
+        android:id="@+id/tv_toRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/btn_login"
+        app:layout_constraintEnd_toEndOf="@id/btn_login"
+        android:text="Register"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="8dp"/>
+
+
+    <TextView
         android:id="@+id/tv_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

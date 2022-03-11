@@ -14,7 +14,6 @@ class ViewPagerAdapter(private val title : List<String>,
                        private val image : List<Int> ) : RecyclerView.Adapter<ViewPagerAdapter.Pager2ViewHolder>() {
 
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Pager2ViewHolder {
         return Pager2ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_onboarding,parent,false))
     }

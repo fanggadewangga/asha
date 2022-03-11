@@ -10,17 +10,30 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Asha">
         <activity
+            android:name=".ConsultationDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ConsultationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ExploreActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ArticleDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".ProfileActivity"
             android:exported="false" />
         <activity
             android:name=".HomeActivity"
-            android:exported="false" />
+            android:exported="true">
+        </activity>
         <activity
             android:name=".sign.SignInActivity"
             android:exported="false" />
         <activity
             android:name=".sign.SignUpActivity"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".OnboardingActivity"
             android:exported="false" />
