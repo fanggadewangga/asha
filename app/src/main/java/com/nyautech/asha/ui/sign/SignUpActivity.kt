@@ -45,9 +45,6 @@ class SignUpActivity : AppCompatActivity() {
         val password = signUpBinding.edtPassword.text.toString()
         val trustedContact = signUpBinding.edtContact.text.toString()
 
-
-//            if (email!=null || password!=null) signUp(email,password)
-//            else Toast.makeText(this,"Null",Toast.LENGTH_SHORT).show()
         if(name.isEmpty()){
             signUpBinding.edtName.setError("Full name is required!")
             signUpBinding.edtName.requestFocus()

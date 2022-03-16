@@ -7,6 +7,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -25,6 +26,7 @@ import com.nyautech.asha.ui.consultation.ConsultationActivity
 
 
 class HomeActivity : AppCompatActivity() {
+
     private lateinit var binding : ActivityHomeBinding
     private lateinit var mAuth: FirebaseAuth
     private lateinit var database: DatabaseReference
@@ -46,26 +48,34 @@ class HomeActivity : AppCompatActivity() {
         // firebase
         // auth & database
         mAuth = FirebaseAuth.getInstance()
-        database = FirebaseDatabase.getInstance().getReference("users")
-
+        database = FirebaseDatabase.getInstance("https://asha-21f6d-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("users")
 
         // get user data
-        val userTrustedContact = "081330723755"
+        var userTrustedContact = ""
         val currentUser: FirebaseUser? = mAuth.currentUser
         var displayName = "User"
-        val userId: String? = mAuth.currentUser?.uid
+        val userId: String? = currentUser?.uid
 
-        if (mAuth.currentUser?.displayName == null){
-            displayName = userId?.let { database.child(it).child("username").get()}
-                .toString()
-            binding.tvWelcome.text = "Welcome,  $displayName!"
-        } else {
-            if (currentUser != null) {
-                displayName = currentUser.displayName.toString()
-                binding.tvWelcome.text = "Welcome,  $displayName!"
-            }
+        if (userId != null) {
+            database.child(userId).get().addOnSuccessListener {
+
+                //get displayName from database
+                displayName = it.child("username").value.toString()
+
+                //get userTrustedContact from database
+                userTrustedContact = it.child("trustedContact").value.toString()
+
+                //set tvWelcome
+                binding.tvWelcome.text = "Welcome, $displayName"
+
+                Log.i("firebase", "Got value ${it.value}")
+
+            }.addOnFailureListener{
+
+                Log.e("firebase", "Error getting data", it)
+
+            }.toString()
         }
-
 
         // click
         // user image
@@ -94,14 +104,5 @@ class HomeActivity : AppCompatActivity() {
                 R.id.nav_concultation -> startActivity(Intent(this, ConsultationActivity::class.java))
             }
         }
-
-
-        // logout
-        binding.btnLogout.setOnClickListener {
-            Firebase.auth.signOut()
-            intent = Intent(this , OnboardingActivity::class.java)
-            startActivity(intent)
-        }
-
     }
 }

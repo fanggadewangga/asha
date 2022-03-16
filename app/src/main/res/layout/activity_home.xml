@@ -85,14 +85,6 @@
         app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <Button
-        android:id="@+id/btn_logout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="Log Out"/>
-
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/btn_emergency_call"
         android:layout_width="120dp"
@@ -103,7 +95,6 @@
         app:layout_constraintTop_toBottomOf="@id/tv_tagline"
         app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
         app:layout_constraintStart_toStartOf="parent"/>
-
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
