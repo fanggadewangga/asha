@@ -1,4 +1,4 @@
-package com.nyautech.asha.sign
+package com.nyautech.asha.ui.sign
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,7 +8,7 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.nyautech.asha.HomeActivity
+import com.nyautech.asha.ui.home.HomeActivity
 import com.nyautech.asha.databinding.ActivitySignInBinding
 
 class SignInActivity : AppCompatActivity() {

@@ -17,8 +17,9 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.nyautech.asha.adapter.ViewPagerAdapter
 import com.nyautech.asha.databinding.ActivityOnboardingBinding
-import com.nyautech.asha.sign.SignInActivity
-import com.nyautech.asha.sign.SignUpActivity
+import com.nyautech.asha.ui.home.HomeActivity
+import com.nyautech.asha.ui.sign.SignInActivity
+import com.nyautech.asha.ui.sign.SignUpActivity
 
 class OnboardingActivity : AppCompatActivity() {
 

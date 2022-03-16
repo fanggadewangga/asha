@@ -1,4 +1,4 @@
-package com.nyautech.asha.sign
+package com.nyautech.asha.ui.sign
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,9 +9,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.nyautech.asha.databinding.ActivitySignUpBinding
+import com.nyautech.asha.model.User
 
 class SignUpActivity : AppCompatActivity() {
 

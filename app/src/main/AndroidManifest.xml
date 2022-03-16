@@ -10,29 +10,29 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Asha">
         <activity
-            android:name=".ConsultationDetailActivity"
+            android:name=".ui.consultation.ConsultationDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".ConsultationActivity"
+            android:name=".ui.consultation.ConsultationActivity"
             android:exported="false" />
         <activity
-            android:name=".ExploreActivity"
+            android:name=".ui.article.ExploreActivity"
             android:exported="false" />
         <activity
-            android:name=".ArticleDetailActivity"
+            android:name=".ui.article.ArticleDetailActivity"
             android:exported="false" />
         <activity
             android:name=".ProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".HomeActivity"
+            android:name="com.nyautech.asha.ui.home.HomeActivity"
             android:exported="true">
         </activity>
         <activity
-            android:name=".sign.SignInActivity"
+            android:name="com.nyautech.asha.ui.sign.SignInActivity"
             android:exported="false" />
         <activity
-            android:name=".sign.SignUpActivity"
+            android:name="com.nyautech.asha.ui.sign.SignUpActivity"
             android:exported="false"/>
         <activity
             android:name=".OnboardingActivity"
@@ -42,7 +42,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

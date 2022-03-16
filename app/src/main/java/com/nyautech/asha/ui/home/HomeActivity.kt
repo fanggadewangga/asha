@@ -1,20 +1,27 @@
 @file:Suppress("DEPRECATION")
 
-package com.nyautech.asha
+package com.nyautech.asha.ui.home
 
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.nyautech.asha.OnboardingActivity
+import com.nyautech.asha.ProfileActivity
+import com.nyautech.asha.R
+import com.nyautech.asha.adapter.ArticleAdapter
+import com.nyautech.asha.data.DataArticle
 import com.nyautech.asha.databinding.ActivityHomeBinding
+import com.nyautech.asha.ui.article.ExploreActivity
+import com.nyautech.asha.ui.consultation.ConsultationActivity
 
 
 class HomeActivity : AppCompatActivity() {
@@ -28,11 +35,18 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //rv
+        val articleAdapter = ArticleAdapter()
+        articleAdapter.saveAllData(DataArticle.listOfArticle(this))
+        binding.rvHomeArticle.apply {
+            adapter = articleAdapter
+            layoutManager = LinearLayoutManager(this@HomeActivity,LinearLayoutManager.VERTICAL,false)
+        }
+
         // firebase
         // auth & database
         mAuth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance().getReference("users")
-
 
 
         // get user data
@@ -44,9 +58,11 @@ class HomeActivity : AppCompatActivity() {
         if (mAuth.currentUser?.displayName == null){
             displayName = userId?.let { database.child(it).child("username").get()}
                 .toString()
+            binding.tvWelcome.text = "Welcome,  $displayName!"
         } else {
             if (currentUser != null) {
                 displayName = currentUser.displayName.toString()
+                binding.tvWelcome.text = "Welcome,  $displayName!"
             }
         }
 
@@ -54,7 +70,7 @@ class HomeActivity : AppCompatActivity() {
         // click
         // user image
         binding.ivUserImage.setOnClickListener {
-            val intent = Intent(this,ProfileActivity::class.java)
+            val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
         }
 
@@ -73,9 +89,9 @@ class HomeActivity : AppCompatActivity() {
         // nav
         binding.bottomNavigation.setOnNavigationItemReselectedListener {
             when(it.itemId){
-                R.id.nav_article -> startActivity(Intent(this,ExploreActivity::class.java))
-                R.id.nav_home -> startActivity(Intent(this,HomeActivity::class.java))
-                R.id.nav_concultation -> startActivity(Intent(this,ConsultationActivity::class.java))
+                R.id.nav_article -> startActivity(Intent(this, ExploreActivity::class.java))
+                R.id.nav_home -> startActivity(Intent(this, HomeActivity::class.java))
+                R.id.nav_concultation -> startActivity(Intent(this, ConsultationActivity::class.java))
             }
         }
 
@@ -87,6 +103,5 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        binding.tvWelcome.text = "Welcome,  $displayName!"
     }
 }
