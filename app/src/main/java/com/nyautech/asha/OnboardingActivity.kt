@@ -67,9 +67,9 @@ class OnboardingActivity : AppCompatActivity() {
         googleSignInClient = GoogleSignIn.getClient(this, gso)
 
 
-        addToList("Onboarding 1","Detail 1",R.drawable.onboarding1)
-        addToList("Onboarding 2","Detail 2",R.drawable.onboarding2)
-        addToList("Onboarding 3","Detail 3",R.drawable.onboarding3)
+        addToList("Panic Button","We help you to get the evidences you need",R.drawable.panic_button)
+        addToList("WriteUps","Know and learn yourself \nby exploring our writeups",R.drawable.onboarding2)
+        addToList("Confab","You can always speak to us, \nwe're here to support you",R.drawable.onboarding3)
 
         binding.vpOnboarding.apply {
             adapter = ViewPagerAdapter(titleList,detailList,imagesList)

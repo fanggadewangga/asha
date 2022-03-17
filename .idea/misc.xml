@@ -11,8 +11,10 @@
         <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/drawable/btn_yellow.xml" value="0.181" />
         <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/drawable/circle_purple.xml" value="0.1" />
         <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/drawable/circle_red.xml" value="0.181" />
+        <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/drawable/edt_chat.xml" value="0.2395" />
         <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/drawable/edt_input.xml" value="0.168" />
         <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/drawable/emergency_call_background.xml" value="0.181" />
+        <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/drawable/ic_add.xml" value="0.2475" />
         <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/drawable/ic_baseline_arrow_forward_24.xml" value="0.168" />
         <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/drawable/ic_camera.xml" value="0.181" />
         <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/drawable/ic_chats.xml" value="0.181" />
@@ -26,27 +28,31 @@
         <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/drawable/ic_home_outlined.xml" value="0.1" />
         <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/drawable/ic_majesticons_phone_outgoing.xml" value="0.181" />
+        <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/drawable/message_sent_background.xml" value="0.2395" />
+        <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/drawable/messsage_received_background.xml" value="0.2395" />
         <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/drawable/telephone_icon.xml" value="0.181" />
         <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/font/red_rose.xml" value="0.271875" />
         <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/layout/activity_article_detail.xml" value="0.2" />
+        <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/layout/activity_chat.xml" value="0.24166666666666667" />
         <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/layout/activity_consultation.xml" value="0.24166666666666667" />
         <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/layout/activity_consultation_detail.xml" value="0.24166666666666667" />
+        <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/layout/activity_expert_sign_in.xml" value="0.24166666666666667" />
         <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/layout/activity_explore.xml" value="0.264" />
         <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/layout/activity_home.xml" value="0.24166666666666667" />
         <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/layout/activity_main.xml" value="0.19972826086956522" />
         <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/layout/activity_onboarding.xml" value="0.15675675675675677" />
-        <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/layout/activity_profile.xml" value="0.24166666666666667" />
+        <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/layout/activity_profile.xml" value="0.2" />
         <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/layout/activity_sign_in.xml" value="0.24166666666666667" />
         <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/layout/activity_sign_up.xml" value="0.19972826086956522" />
         <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/layout/activity_splash_screen.xml" value="0.22826086956521738" />
         <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/layout/item_category.xml" value="0.536" />
         <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/layout/item_list_article.xml" value="0.264" />
         <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/layout/item_list_chat.xml" value="0.24166666666666667" />
+        <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/layout/item_message_received.xml" value="0.24166666666666667" />
+        <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/layout/item_message_sent.xml" value="0.4" />
         <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/layout/item_onboarding.xml" value="0.22826086956521738" />
         <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/menu/bottom_nav_menu.xml" value="0.24166666666666667" />
         <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2475" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/asha3/app/src/main/res/layout/activity_home.xml" value="0.25" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/asha3/app/src/main/res/layout/activity_profile.xml" value="0.25" />
       </map>
     </option>
   </component>

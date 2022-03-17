@@ -34,7 +34,7 @@
     <EditText
         android:id="@+id/edt_email"
         android:layout_width="match_parent"
-        android:layout_height="32dp"
+        android:layout_height="40dp"
         android:paddingStart="16dp"
         android:fontFamily="@font/red_rose"
         android:layout_marginTop="4dp"
@@ -44,15 +44,15 @@
         app:layout_constraintStart_toStartOf="@id/tv_username"/>
 
     <TextView
-        android:id="@+id/tv_toRegister"
+        android:id="@+id/tv_to_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/btn_login"
         app:layout_constraintEnd_toEndOf="@id/btn_login"
+        android:fontFamily="@font/red_rose"
         android:text="Register"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="8dp"/>
-
 
     <TextView
         android:id="@+id/tv_password"
@@ -69,10 +69,11 @@
     <EditText
         android:id="@+id/edt_password"
         android:layout_width="match_parent"
-        android:layout_height="32dp"
+        android:layout_height="40dp"
         android:paddingStart="16dp"
         android:fontFamily="@font/red_rose"
         android:layout_marginTop="4dp"
+        android:inputType="textPassword"
         android:background="@drawable/edt_input"
         android:layout_marginHorizontal="32dp"
         app:layout_constraintTop_toBottomOf="@id/tv_password"

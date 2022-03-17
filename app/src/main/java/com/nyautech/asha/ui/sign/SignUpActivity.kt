@@ -90,6 +90,7 @@ class SignUpActivity : AppCompatActivity() {
                             if (task.isSuccessful){
                                 Toast.makeText(this, "You have been registered successfully!", Toast.LENGTH_LONG).show()
                                 startActivity(Intent(this, SignInActivity :: class.java))
+                                finishAffinity()
                             } else{
                                 Toast.makeText(this, "Failed to register, pwease try again!", Toast.LENGTH_LONG).show()
                             }

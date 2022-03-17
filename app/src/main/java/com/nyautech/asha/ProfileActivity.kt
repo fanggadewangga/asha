@@ -35,6 +35,7 @@ class ProfileActivity : AppCompatActivity() {
         var name: String?
         var userName: String?
         var email: String?
+        var trustedContact : String?
 
         if (userId != null) {
             database.child(userId).get().addOnSuccessListener {
@@ -48,11 +49,15 @@ class ProfileActivity : AppCompatActivity() {
                 //get email from database
                 email = currentUser.email.toString()
 
+                // get trusted contact
+                trustedContact = it.child("trustedContact").value.toString()
+
 
                 //set tv
                 binding.tvUsersName.text = name
                 binding.tvUsersUsername.text = userName
                 binding.tvUsersEmail.text = email
+                binding.tvUsersTrustedContact.text = trustedContact
 
                 Log.i("firebase", "Got value ${it.value}")
 
@@ -62,11 +67,21 @@ class ProfileActivity : AppCompatActivity() {
 
             }.toString()
         }
+
+        // click
+        // user photo
+        binding.ivAddPhoto.setOnClickListener {
+            val intent = Intent(Intent.ACTION_PICK)
+            intent.type = "image/*"
+            startActivity(intent)
+        }
+
         // logout
         binding.btnLogout.setOnClickListener {
             Firebase.auth.signOut()
             intent = Intent(this , OnboardingActivity::class.java)
             startActivity(intent)
+            finishAffinity()
         }
     }
 

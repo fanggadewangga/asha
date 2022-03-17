@@ -66,7 +66,7 @@ class HomeActivity : AppCompatActivity() {
                 userTrustedContact = it.child("trustedContact").value.toString()
 
                 //set tvWelcome
-                binding.tvWelcome.text = "Welcome, $displayName"
+                binding.tvWelcome.text = "Welcome,\n$displayName"
 
                 Log.i("firebase", "Got value ${it.value}")
 

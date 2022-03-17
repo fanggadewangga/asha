@@ -33,8 +33,6 @@ class SignInActivity : AppCompatActivity() {
         signInBinding.tvToRegister.setOnClickListener {
             startActivity(Intent(this, SignUpActivity::class.java))
         }
-        //Forgot Password
-
     }
     private fun signIn() {
 
@@ -69,6 +67,7 @@ class SignInActivity : AppCompatActivity() {
                     // Sign in success, update UI with the signed-in user's information
                     Toast.makeText(this,"Login Success!",Toast.LENGTH_SHORT).show()
                     startActivity(Intent(this, HomeActivity::class.java))
+                    finishAffinity()
                 } else {
                     // If sign in fails, display a message to the user.
                     Toast.makeText(this,"User does not exist!",Toast.LENGTH_SHORT).show()
