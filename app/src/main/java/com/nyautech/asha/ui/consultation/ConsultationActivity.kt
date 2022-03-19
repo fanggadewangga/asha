@@ -21,6 +21,7 @@ class ConsultationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        //rv
 
         // nav
         binding.icArticle.setOnClickListener {
@@ -29,9 +30,6 @@ class ConsultationActivity : AppCompatActivity() {
         binding.icHome.setOnClickListener {
             startActivity(Intent(this,HomeActivity::class.java))
         }
-
-
-
     }
 
 }

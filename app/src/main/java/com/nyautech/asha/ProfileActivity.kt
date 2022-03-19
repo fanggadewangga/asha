@@ -1,5 +1,6 @@
 package com.nyautech.asha
 
+import android.content.ContentValues
 import android.content.Intent
 import android.net.Uri
 import android.opengl.Visibility
@@ -7,12 +8,21 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.webkit.MimeTypeMap
+import android.widget.Toast
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
+import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.ktx.storage
 import com.nyautech.asha.databinding.ActivityHomeBinding
 import com.nyautech.asha.databinding.ActivityOnboardingBinding
 import com.nyautech.asha.databinding.ActivityProfileBinding
@@ -25,8 +35,12 @@ class ProfileActivity : AppCompatActivity() {
     lateinit var imageURI : Uri
     private lateinit var mAuth: FirebaseAuth
     private lateinit var database: DatabaseReference
+    private lateinit var profilePictureReference: StorageReference
+    private lateinit var firebaseStorage: FirebaseStorage
+    private lateinit var userId: String
+    private lateinit var imageURL: String
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+        override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -36,43 +50,52 @@ class ProfileActivity : AppCompatActivity() {
         mAuth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance("https://asha-21f6d-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("users")
         val currentUser: FirebaseUser? = mAuth.currentUser
-        val userId: String? = currentUser?.uid
+        userId = currentUser?.uid.toString()
+
+        //storage
+        firebaseStorage = FirebaseStorage.getInstance()
+        profilePictureReference = firebaseStorage.getReference("profile pictures/$userId")
 
         var name: String?
         var userName: String?
         var email: String?
         var trustedContact : String?
 
-        if (userId != null) {
-            database.child(userId).get().addOnSuccessListener {
+        database.child(userId).get().addOnSuccessListener {
 
-                //get name from database
-                name = it.child("name").value.toString()
+            //get name from database
+            name = it.child("name").value.toString()
 
-                //get userName from database
-                userName = it.child("username").value.toString()
+            //get userName from database
+            userName = it.child("username").value.toString()
 
-                //get email from database
-                email = currentUser.email.toString()
+            //get email from database
+            email = currentUser!!.email.toString()
 
-                // get trusted contact
-                trustedContact = it.child("trustedContact").value.toString()
+            // get trusted contact
+            trustedContact = it.child("trustedContact").value.toString()
 
 
-                //set tv
-                binding.tvUsersName.text = name
-                binding.tvUsersUsername.text = userName
-                binding.tvUsersEmail.text = email
-                binding.tvUsersTrustedContact.text = trustedContact
+            //set tv
+            binding.tvUsersName.text = name
+            binding.tvUsersUsername.text = userName
+            binding.tvUsersEmail.text = email
+            binding.tvUsersTrustedContact.text = trustedContact
 
-                Log.i("firebase", "Got value ${it.value}")
+            //set iv
+            profilePictureReference.downloadUrl.addOnSuccessListener {
+                imageURL = it.toString()
+                Glide.with(this).load(imageURL).apply(RequestOptions.circleCropTransform()).diskCacheStrategy(DiskCacheStrategy.ALL).into(binding.ivUser)
+            }
 
-            }.addOnFailureListener{
 
-                Log.e("firebase", "Error getting data", it)
+            Log.i("firebase", "Got value ${it.value}")
 
-            }.toString()
-        }
+        }.addOnFailureListener{
+
+            Log.e("firebase", "Error getting data", it)
+
+        }.toString()
 
         // click
         // user photo
@@ -95,15 +118,7 @@ class ProfileActivity : AppCompatActivity() {
         }
     }
 
-
-
-
     // fun
-
-    private fun uploadImage() {
-        TODO("Not yet implemented")
-    }
-
 
     private fun selectImage() {
         val intent = Intent(Intent.ACTION_GET_CONTENT).apply {
@@ -118,11 +133,19 @@ class ProfileActivity : AppCompatActivity() {
 
         if (requestCode==100 && resultCode == RESULT_OK){
 
-            imageURI = data?.data!!
-            binding.ivUser.setImageURI(imageURI)
-            binding.btnUploadImg.setVisibility(View.VISIBLE)
-
+            imageURI = data?.data!! //
+            binding.ivUser.setImageURI(imageURI) // set ImageView with the selected photo
+            binding.btnUploadImg.setVisibility(View.VISIBLE) //show upload button
         }
     }
 
+    private fun uploadImage() {
+        val fileName = userId
+        profilePictureReference = firebaseStorage.getReference("profile pictures/$fileName")
+        profilePictureReference.putFile(imageURI).addOnSuccessListener {
+            Log.d(ContentValues.TAG, "uploadImageSuccess:$fileName")
+        }.addOnFailureListener{
+            Log.w(ContentValues.TAG, "uploadImageFailed:", it)
+        }
+    }
 }
