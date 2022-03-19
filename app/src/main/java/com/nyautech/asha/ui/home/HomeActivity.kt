@@ -5,25 +5,21 @@ package com.nyautech.asha.ui.home
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import com.nyautech.asha.OnboardingActivity
 import com.nyautech.asha.ProfileActivity
-import com.nyautech.asha.R
 import com.nyautech.asha.adapter.ArticleAdapter
 import com.nyautech.asha.data.DataArticle
 import com.nyautech.asha.databinding.ActivityHomeBinding
@@ -71,13 +67,13 @@ class HomeActivity : AppCompatActivity() {
         // get user data
         var userTrustedContact: String? = ""
         val currentUser: FirebaseUser? = mAuth.currentUser
-        var displayName = "User";
+        var displayName = "User"
         val userId: String? = currentUser?.uid
 
         //get expert data
         var category: String
 
-        var isExpert: Boolean = true//bernilai true jika itu expert, bernilai false jika user
+        var isExpert: Boolean = true //bernilai true jika itu expert, bernilai false jika user
 
         //Get user database
         if (userId != null) {
