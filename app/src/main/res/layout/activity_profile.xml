@@ -92,10 +92,22 @@
     </TableLayout>
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_upload_img"
+        style="@style/SignButton"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/btn_yellow"
+        android:text="Upload Image"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@id/btn_logout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_logout"
         style="@style/SignButton"
         android:layout_marginHorizontal="24dp"
-        android:layout_marginBottom="96dp"
+        android:layout_marginBottom="56dp"
         android:background="@drawable/btn_purple"
         android:text="Log Out"
         app:layout_constraintBottom_toBottomOf="parent"

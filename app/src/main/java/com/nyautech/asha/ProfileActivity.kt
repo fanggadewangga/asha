@@ -1,9 +1,12 @@
 package com.nyautech.asha
 
 import android.content.Intent
+import android.net.Uri
+import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
@@ -13,10 +16,13 @@ import com.google.firebase.ktx.Firebase
 import com.nyautech.asha.databinding.ActivityHomeBinding
 import com.nyautech.asha.databinding.ActivityOnboardingBinding
 import com.nyautech.asha.databinding.ActivityProfileBinding
+import java.net.URI
 
+@Suppress("DEPRECATION")
 class ProfileActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityProfileBinding
+    lateinit var imageURI : Uri
     private lateinit var mAuth: FirebaseAuth
     private lateinit var database: DatabaseReference
 
@@ -71,9 +77,13 @@ class ProfileActivity : AppCompatActivity() {
         // click
         // user photo
         binding.ivAddPhoto.setOnClickListener {
-            val intent = Intent(Intent.ACTION_PICK)
-            intent.type = "image/*"
-            startActivity(intent)
+            selectImage()
+        }
+
+        // upload photo
+
+        binding.btnUploadImg.setOnClickListener {
+            uploadImage()
         }
 
         // logout
@@ -82,6 +92,36 @@ class ProfileActivity : AppCompatActivity() {
             intent = Intent(this , OnboardingActivity::class.java)
             startActivity(intent)
             finishAffinity()
+        }
+    }
+
+
+
+
+    // fun
+
+    private fun uploadImage() {
+        TODO("Not yet implemented")
+    }
+
+
+    private fun selectImage() {
+        val intent = Intent(Intent.ACTION_GET_CONTENT).apply {
+            type = "image/*"
+        }
+
+        startActivityForResult(intent,100)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode==100 && resultCode == RESULT_OK){
+
+            imageURI = data?.data!!
+            binding.ivUser.setImageURI(imageURI)
+            binding.btnUploadImg.setVisibility(View.VISIBLE)
+
         }
     }
 

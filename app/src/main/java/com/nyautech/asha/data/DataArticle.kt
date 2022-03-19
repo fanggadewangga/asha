@@ -42,4 +42,15 @@ object DataArticle {
         return listOfArticle
     }
 
+    fun searchArticle(query : String, context: Context) : ArrayList<Article>{
+        var searchResult = ArrayList<Article>()
+
+        listOfArticle(context).forEach {
+            if (it.title.contains(query)){
+                searchResult.add(it)
+            }
+        }
+
+        return searchResult
+    }
 }

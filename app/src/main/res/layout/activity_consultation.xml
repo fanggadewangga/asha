@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".consultation.ConsultationActivity">
+    tools:context=".ui.consultation.ConsultationActivity">
 
     <TextView
         android:id="@+id/tv_consultation"
@@ -15,86 +15,221 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cv_consultation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="16dp"
-        app:cardCornerRadius="8dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_consultation"
-        app:layout_constraintStart_toStartOf="@id/tv_consultation">
-
-        <SearchView
-            android:id="@+id/sv_consultation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-    </androidx.cardview.widget.CardView>
-
     <TextView
         android:id="@+id/tv_suggestion"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:fontFamily="@font/red_rose"
         android:textStyle="bold"
         android:textSize="24sp"
         android:text="Suggestion"
         android:textColor="@color/dark_purple"
-        app:layout_constraintTop_toBottomOf="@id/cv_consultation"
+        app:layout_constraintTop_toBottomOf="@id/tv_consultation"
         app:layout_constraintStart_toStartOf="parent"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_suggestion"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginHorizontal="24dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_suggestion"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+    <androidx.cardview.widget.CardView
+            android:id="@+id/cv_mental_health"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="32dp"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_suggestion">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_category"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:layout_marginHorizontal="24dp"
-        android:layout_marginTop="16dp"
-        tools:listitem="@layout/item_category"
-        app:layout_constraintTop_toBottomOf="@id/rv_suggestion"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+            <ImageView
+                android:id="@+id/iv_mental_health"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@mipmap/ic_launcher"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_sexual_health"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintStart_toEndOf="@id/cv_mental_health"
+        app:layout_constraintTop_toBottomOf="@id/tv_suggestion">
+
+        <ImageView
+            android:id="@+id/iv_sexual_health"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_komnas"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintStart_toEndOf="@id/cv_sexual_health"
+        app:layout_constraintTop_toBottomOf="@id/tv_suggestion">
+
+        <ImageView
+            android:id="@+id/iv_komnas"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_law_expert"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="32dp"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_suggestion">
+
+        <ImageView
+            android:id="@+id/iv_law_expert"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tv_mental_health"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="Mental\nHealth"
+        android:textColor="@color/black"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/red_rose"
+        android:textStyle="bold"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/cv_mental_health"
+        app:layout_constraintStart_toStartOf="@id/cv_mental_health"
+        app:layout_constraintEnd_toEndOf="@id/cv_mental_health"/>
+    <TextView
+        android:id="@+id/tv_sexual_health"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="Sexual\nHealth"
+        android:textColor="@color/black"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/red_rose"
+        android:textStyle="bold"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/cv_sexual_health"
+        app:layout_constraintStart_toStartOf="@id/cv_sexual_health"
+        app:layout_constraintEnd_toEndOf="@id/cv_sexual_health"/>
+    <TextView
+        android:id="@+id/tv_komnas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="Komnas\nPerempuan"
+        android:textColor="@color/black"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/red_rose"
+        android:textStyle="bold"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/cv_komnas"
+        app:layout_constraintStart_toStartOf="@id/cv_komnas"
+        app:layout_constraintEnd_toEndOf="@id/cv_komnas"/>
 
     <TextView
         android:id="@+id/tv_chatroom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="40dp"
         android:text="Chatroom"
         android:fontFamily="@font/red_rose"
         android:textSize="24sp"
         android:textStyle="bold"
         android:textColor="@color/dark_purple"
-        app:layout_constraintTop_toBottomOf="@id/rv_category"
+        app:layout_constraintTop_toBottomOf="@id/tv_mental_health"
         app:layout_constraintStart_toStartOf="@id/tv_suggestion"/>
+    <TextView
+        android:id="@+id/tv_law"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="Law\nExpert"
+        android:textColor="@color/black"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/red_rose"
+        android:textStyle="bold"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/cv_law_expert"
+        app:layout_constraintStart_toStartOf="@id/cv_law_expert"
+        app:layout_constraintEnd_toEndOf="@id/cv_law_expert"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="260dp"
+        android:layout_marginTop="16dp"
         android:layout_marginHorizontal="24dp"
         app:layout_constraintTop_toBottomOf="@id/tv_chatroom"/>
 
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="64dp"
         android:background="@drawable/bottom_nav_background"
-        app:menu="@menu/bottom_nav_menu"
-        app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        android:orientation="horizontal">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/ic_article"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="48dp"
+                android:src="@drawable/ic_compass_outlined"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/ic_home"/>
+
+            <ImageView
+                android:id="@+id/ic_home"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_home_outlined"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <ImageView
+                android:id="@+id/ic_chat"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="48dp"
+                android:src="@drawable/ic_chats_filled"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@id/ic_home"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

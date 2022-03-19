@@ -2,6 +2,7 @@ package com.nyautech.asha.ui.article
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nyautech.asha.R
@@ -13,6 +14,7 @@ import com.nyautech.asha.ui.home.HomeActivity
 
 private lateinit var binding : ActivityExploreBinding
 
+@Suppress("DEPRECATION")
 class ExploreActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityExploreBinding.inflate(layoutInflater)
@@ -27,12 +29,30 @@ class ExploreActivity : AppCompatActivity() {
             layoutManager = LinearLayoutManager(this@ExploreActivity,LinearLayoutManager.VERTICAL,false)
         }
 
-        binding.bottomNavigation.setOnNavigationItemReselectedListener {
-            when(it.itemId){
-                R.id.nav_article -> startActivity(Intent(this,ExploreActivity::class.java))
-                R.id.nav_home -> startActivity(Intent(this, HomeActivity::class.java))
-                R.id.nav_concultation -> startActivity(Intent(this, ConsultationActivity::class.java))
-            }
+        binding.svExplore.apply {
+            queryHint = resources.getString(R.string.article_text)
+            setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    val query = query.toString()
+                    clearFocus()
+                    val dataArticle = DataArticle
+                    dataArticle.searchArticle(query, this@ExploreActivity)
+                    return true
+                }
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    return false
+                }
+            })
+        }
+
+
+
+        // nav
+        binding.icHome.setOnClickListener {
+            startActivity(Intent(this,HomeActivity::class.java))
+        }
+        binding.icChat.setOnClickListener {
+            startActivity(Intent(this,ConsultationActivity::class.java))
         }
     }
 }

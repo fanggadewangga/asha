@@ -7,6 +7,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
@@ -23,6 +24,7 @@ import com.nyautech.asha.data.DataArticle
 import com.nyautech.asha.databinding.ActivityHomeBinding
 import com.nyautech.asha.ui.article.ExploreActivity
 import com.nyautech.asha.ui.consultation.ConsultationActivity
+import com.nyautech.asha.util.Constanta.REQUEST_VIDEO_CAPTURE
 
 
 class HomeActivity : AppCompatActivity() {
@@ -31,8 +33,10 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var mAuth: FirebaseAuth
     private lateinit var database: DatabaseReference
 
+
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -91,18 +95,21 @@ class HomeActivity : AppCompatActivity() {
         }
 
         binding.btnEmergencyCamera.setOnLongClickListener {
-            val intent = Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE)
-            startActivity(intent)
+            Intent(MediaStore.ACTION_VIDEO_CAPTURE).also { takeVideoIntent ->
+                takeVideoIntent.resolveActivity(packageManager)?.also {
+                    startActivityForResult(takeVideoIntent, REQUEST_VIDEO_CAPTURE)
+                }
+            }
             true
         }
 
         // nav
-        binding.bottomNavigation.setOnNavigationItemReselectedListener {
-            when(it.itemId){
-                R.id.nav_article -> startActivity(Intent(this, ExploreActivity::class.java))
-                R.id.nav_home -> startActivity(Intent(this, HomeActivity::class.java))
-                R.id.nav_concultation -> startActivity(Intent(this, ConsultationActivity::class.java))
-            }
+        binding.icArticle.setOnClickListener {
+            startActivity(Intent(this,ExploreActivity::class.java))
+        }
+        binding.icChat.setOnClickListener {
+            startActivity(Intent(this,ConsultationActivity::class.java))
         }
     }
+
 }

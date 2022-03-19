@@ -3,16 +3,13 @@
 
     <item android:id="@+id/nav_article"
         android:icon="@drawable/ic_compass"
-        android:title="Article"
-        android:enabled="true"/>
+        android:title=""/>
 
     <item android:id="@+id/nav_home"
         android:icon="@drawable/ic_home"
-        android:title="Home"
-        android:enabled="true"/>
+        android:title=""/>
 
     <item android:id="@+id/nav_concultation"
         android:icon="@drawable/ic_chats"
-        android:title="Chat"
-        android:enabled="true"/>
+        android:title=""/>
 </menu>
