@@ -6,11 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.database.ValueEventListener
 import com.nyautech.asha.R
 import com.nyautech.asha.model.Expert
 import com.nyautech.asha.model.User
 
-class ConsultationAdapter(val context: Context, val expertList : ArrayList<User>): RecyclerView.Adapter<ConsultationAdapter.ConsultationViewHolder>() {
+class ConsultationAdapter(val context: Context, private val expertList: ArrayList<Expert>): RecyclerView.Adapter<ConsultationAdapter.ConsultationViewHolder>() {
 
     override fun onCreateViewHolder(
        parent: ViewGroup,viewType: Int): ConsultationAdapter.ConsultationViewHolder {
@@ -21,8 +22,8 @@ class ConsultationAdapter(val context: Context, val expertList : ArrayList<User>
     override fun onBindViewHolder(holder: ConsultationAdapter.ConsultationViewHolder, position: Int) {
         val currentExpert = expertList[position]
 
-        holder.expertName.text = currentExpert.name
-        holder.expertCategory.text = currentExpert.username
+        holder.expertName.text = currentExpert.username
+        holder.expertCategory.text = currentExpert.category
     }
 
     override fun getItemCount(): Int {

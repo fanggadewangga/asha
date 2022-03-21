@@ -6,6 +6,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -47,6 +48,7 @@ class ProfileActivity : AppCompatActivity() {
         //storage
         firebaseStorage = FirebaseStorage.getInstance()
         profilePictureReference = firebaseStorage.getReference("profile pictures/$userId")
+
 
         var name: String?
         var userName: String?
@@ -134,6 +136,7 @@ class ProfileActivity : AppCompatActivity() {
         profilePictureReference = firebaseStorage.getReference("profile pictures/$fileName")
         profilePictureReference.putFile(imageURI).addOnSuccessListener {
             Log.d(ContentValues.TAG, "uploadImageSuccess:$fileName")
+            Toast.makeText(this,"Upload Success",Toast.LENGTH_SHORT).show()
         }.addOnFailureListener{
             Log.w(ContentValues.TAG, "uploadImageFailed:", it)
         }
