@@ -9,7 +9,7 @@
     <View
         android:id="@+id/top_view"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="70dp"
         app:layout_constraintTop_toTopOf="parent"
         android:background="@color/purple"/>
 
@@ -21,25 +21,35 @@
         android:fontFamily="@font/red_rose"
         android:textColor="@color/black"
         android:textStyle="bold"
-        android:textSize="24sp"
+        android:textSize="16sp"
         android:layout_marginStart="24dp"
-        app:layout_constraintTop_toTopOf="@id/iv_chat_reveicer_img"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/iv_chat_reveicer_img"
         app:layout_constraintStart_toEndOf="@id/iv_chat_reveicer_img"/>
 
+    <TextView
+        android:id="@+id/tv_chat_receiver_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Category"
+        android:textStyle="bold"
+        android:fontFamily="@font/red_rose"
+        app:layout_constraintTop_toBottomOf="@id/tv_chat_receiver_name"
+        app:layout_constraintStart_toStartOf="@id/tv_chat_receiver_name"/>
+
     <ImageView
         android:id="@+id/iv_chat_reveicer_img"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:src="@drawable/img_profile"
         android:layout_marginStart="24dp"
-        app:layout_constraintTop_toTopOf="@id/top_view"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/top_view"
         app:layout_constraintStart_toStartOf="@id/top_view"/>
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_chat_activity"
+        android:id="@+id/rv_chat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/top_view"
@@ -48,7 +58,7 @@
     <View
         android:id="@+id/bot_view"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="55dp"
         app:layout_constraintBottom_toBottomOf="parent"
         android:background="@color/purple"/>
 
@@ -56,27 +66,26 @@
         android:id="@+id/edt_message_box"
         android:background="@drawable/edt_chat"
         android:layout_width="320dp"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:paddingHorizontal="16dp"
         android:paddingVertical="8dp"
-        android:layout_marginVertical="16dp"
         android:layout_marginHorizontal="12dp"
         android:hint="Type here.."
         android:fontFamily="@font/red_rose"
         android:textColor="@color/silver"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="@id/bot_view"
+        app:layout_constraintBottom_toBottomOf="@id/bot_view"
         app:layout_constraintStart_toStartOf="parent"/>
 
     <ImageView
         android:id="@+id/btn_send_message"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
         android:src="@drawable/ic_send_msg"
+        android:layout_marginStart="8dp"
         app:layout_constraintBottom_toBottomOf="@id/edt_message_box"
         app:layout_constraintTop_toTopOf="@id/edt_message_box"
-        app:layout_constraintStart_toEndOf="@id/edt_message_box"
-        android:layout_marginStart="16dp"/>
+        app:layout_constraintStart_toEndOf="@id/edt_message_box"/>
 
 
 

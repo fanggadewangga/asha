@@ -3,10 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="8dp"
-    android:layout_marginTop="16dp"
-    app:strokeColor="@color/black"
+    android:layout_marginTop="8dp"
+    app:strokeColor="@color/browser_actions_bg_grey"
     app:strokeWidth="1dp"
-    app:cardCornerRadius="8dp"
+    app:cardCornerRadius="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout

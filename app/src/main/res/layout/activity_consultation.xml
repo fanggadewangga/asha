@@ -178,7 +178,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_chat"
         android:layout_width="match_parent"
-        android:layout_height="260dp"
+        android:layout_height="400dp"
         android:layout_marginTop="8dp"
         tools:listitem="@layout/item_list_chat"
         android:layout_marginHorizontal="24dp"
