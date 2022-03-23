@@ -12,6 +12,7 @@ import com.nyautech.asha.adapter.ConsultationAdapter
 import com.nyautech.asha.databinding.ActivityConsultationBinding
 import com.nyautech.asha.model.Expert
 import com.nyautech.asha.ui.article.ExploreActivity
+import com.nyautech.asha.util.Constanta.EXTRA_CATEGORY
 
 
 private lateinit var binding : ActivityConsultationBinding
@@ -28,6 +29,28 @@ class ConsultationActivity : AppCompatActivity() {
         binding = ActivityConsultationBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        // click
+        binding.cvMentalHealth.setOnClickListener {
+            val intent = Intent(this,ConsultationDetailActivity::class.java)
+            intent.putExtra(EXTRA_CATEGORY,"Mental Health")
+            startActivity(intent)
+        }
+        binding.cvSexualHealth.setOnClickListener {
+            val intent = Intent(this,ConsultationDetailActivity::class.java)
+            intent.putExtra(EXTRA_CATEGORY,"Sexual Health")
+            startActivity(intent)
+        }
+        binding.cvKomnas.setOnClickListener {
+            val intent = Intent(this,ConsultationDetailActivity::class.java)
+            intent.putExtra(EXTRA_CATEGORY,"Komnas Perempuan")
+            startActivity(intent)
+        }
+        binding.cvLawExpert.setOnClickListener {
+            val intent = Intent(this,ConsultationDetailActivity::class.java)
+            intent.putExtra(EXTRA_CATEGORY,"Law Expert")
+            startActivity(intent)
+        }
 
         // firebase
         // auth

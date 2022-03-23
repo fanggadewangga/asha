@@ -17,7 +17,7 @@
             android:id="@+id/iv_chat_img"
             android:layout_width="56dp"
             android:layout_height="56dp"
-            android:src="@drawable/user_img"
+            android:src="@drawable/img_profile"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
 

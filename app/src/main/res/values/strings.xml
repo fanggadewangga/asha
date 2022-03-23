@@ -5,6 +5,7 @@
     <string name="home_welcome">Welcome,\nAlthea!</string>
     <string name="app_tagline">You\'re Not Alone</string>
     <string name="article_text">Talking about sex can be difficult for many people, and talking about sexual health problems can be even harder. Bedroom issues like sexual performance and low libido may go beyond the scope of what you would normally discuss with your primary care physician, obgyn, or usual therapist. This is where sex therapists enter the picture — trained professionals who focus specifically on human sexuality and healthy sexual behavior, and who can offer compassionate, researchbacked help while addressing the full range of pertinent psychological, physiological, and cultural factors in play. Think sex therapy could be helpful for you and your partner? Learn more about what sex therapists do and what a typical session may look like. What Is Sex Therapy and What Do Sex Therapists Do? “A sex therapist is a licensed mental health professional who has extensive education and</string>
+    <string name="emergency_btn_explanation">If you’re in an emergency sexual harassment situation, tap one of the panic buttons for 3 seconds\n\nThe call button will call your trusted contact\n\nThe camera button will record your situation and it will be your evidence</string>
     <string-array name="category_title">
         <item>Mental\nHealth</item>
         <item>Sexual\nHealth</item>

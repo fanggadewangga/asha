@@ -51,7 +51,7 @@ class HomeActivity : AppCompatActivity() {
         articleAdapter.saveAllData(DataArticle.listOfArticle(this))
         binding.rvHomeArticle.apply {
             adapter = articleAdapter
-            layoutManager = LinearLayoutManager(this@HomeActivity,LinearLayoutManager.VERTICAL,false)
+            layoutManager = LinearLayoutManager(this@HomeActivity,LinearLayoutManager.HORIZONTAL,false)
         }
 
         // firebase
