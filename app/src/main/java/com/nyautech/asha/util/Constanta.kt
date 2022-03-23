@@ -5,4 +5,5 @@ object Constanta {
     const val EXTRA_ARTICLE = "EXTRA_ARTICLE"
     const val REQUEST_VIDEO_CAPTURE = 1
     const val EXTRA_CATEGORY = "EXTRA_CATEGORY"
+    const val RC_SIGN_IN = 120
 }

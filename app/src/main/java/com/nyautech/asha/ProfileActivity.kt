@@ -11,6 +11,12 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
+import com.gdsc.gdsctoast.GDSCToast
+import com.gdsc.gdsctoast.util.ToastShape
+import com.gdsc.gdsctoast.util.ToastType
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
@@ -25,13 +31,14 @@ import com.nyautech.asha.databinding.ActivityProfileBinding
 class ProfileActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityProfileBinding
-    lateinit var imageURI : Uri
+    private lateinit var imageURI : Uri
     private lateinit var mAuth: FirebaseAuth
     private lateinit var database: DatabaseReference
     private lateinit var profilePictureReference: StorageReference
     private lateinit var firebaseStorage: FirebaseStorage
     private lateinit var userId: String
     private lateinit var imageURL: String
+    private lateinit var googleSignInClient: GoogleSignInClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,13 +56,22 @@ class ProfileActivity : AppCompatActivity() {
         firebaseStorage = FirebaseStorage.getInstance()
         profilePictureReference = firebaseStorage.getReference("profile pictures/$userId")
 
+        // gso
+        val gso = GoogleSignInOptions
+            .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken("88902840580-otli1056kp6j8ukeq8ekb2raa1o51ugr.apps.googleusercontent.com")
+            .requestEmail()
+            .build()
+
+        googleSignInClient = GoogleSignIn.getClient(this, gso)
+
 
         var name: String?
         var userName: String?
         var email: String?
         var trustedContact : String?
 
-        database.child(userId).get().addOnSuccessListener {
+        database.child(userId).get().addOnSuccessListener { it ->
 
             //get name from database
             name = it.child("name").value.toString()
@@ -91,6 +107,7 @@ class ProfileActivity : AppCompatActivity() {
 
         }.toString()
 
+
         // click
         // user photo
         binding.ivAddPhoto.setOnClickListener {
@@ -105,12 +122,18 @@ class ProfileActivity : AppCompatActivity() {
 
         // logout
         binding.btnLogout.setOnClickListener {
+            googleSignInClient.signOut().addOnCompleteListener {
+                startActivity(Intent(this , OnboardingActivity::class.java))
+                finishAffinity()
+            }
+
             Firebase.auth.signOut()
             intent = Intent(this , OnboardingActivity::class.java)
             startActivity(intent)
             finishAffinity()
         }
     }
+
     // fun
     private fun selectImage() {
         val intent = Intent(Intent.ACTION_GET_CONTENT).apply {
@@ -127,7 +150,7 @@ class ProfileActivity : AppCompatActivity() {
 
             imageURI = data?.data!! //
             binding.ivUser.setImageURI(imageURI) // set ImageView with the selected photo
-            binding.btnUploadImg.setVisibility(View.VISIBLE) //show upload button
+            binding.btnUploadImg.visibility = View.VISIBLE //show upload button
         }
     }
 
@@ -136,7 +159,15 @@ class ProfileActivity : AppCompatActivity() {
         profilePictureReference = firebaseStorage.getReference("profile pictures/$fileName")
         profilePictureReference.putFile(imageURI).addOnSuccessListener {
             Log.d(ContentValues.TAG, "uploadImageSuccess:$fileName")
-            Toast.makeText(this,"Upload Success",Toast.LENGTH_SHORT).show()
+            GDSCToast.showAnyToast(this) {
+                it.apply {
+                    text = "Upload Success"
+                    duration = Toast.LENGTH_LONG
+                    showLogo = true
+                    toastType = ToastType.SUCCESS
+                    toastShape = ToastShape.ROUNDED
+                }
+            }
         }.addOnFailureListener{
             Log.w(ContentValues.TAG, "uploadImageFailed:", it)
         }

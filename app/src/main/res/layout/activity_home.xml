@@ -69,7 +69,7 @@
         android:fontFamily="@font/red_rose"
         android:textStyle="bold"
         android:textAlignment="center"
-        android:textColor="@color/pink"
+        android:textColor="@color/dark_purple"
         app:layout_constraintTop_toBottomOf="@id/rv_home_article"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
@@ -82,7 +82,7 @@
         android:textSize="14sp"
         android:fontFamily="@font/red_rose"
         android:textStyle="bold"
-        android:textColor="@color/pink"
+        android:textColor="@color/dark_purple"
         android:textAlignment="center"
         android:text="@string/emergency_btn_explanation"
         app:layout_constraintStart_toStartOf="parent"

@@ -60,22 +60,18 @@ class HomeActivity : AppCompatActivity() {
         userId = mAuth.currentUser?.uid.toString()
         userDatabase = FirebaseDatabase.getInstance("https://asha-21f6d-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("users")
         expertDatabase = FirebaseDatabase.getInstance("https://asha-21f6d-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("expert")
-        //storage
+        // storage
         firebaseStorage = FirebaseStorage.getInstance()
         profilePictureReference = firebaseStorage.getReference("profile pictures/$userId")
 
         // get user data
         var userTrustedContact: String? = ""
-        val currentUser: FirebaseUser? = mAuth.currentUser
+        val currentUser= mAuth.currentUser
         var displayName = "User"
-        val userId: String? = currentUser?.uid
+        val userId = currentUser?.uid
 
-        //get expert data
-        var category: String
 
-        var isExpert: Boolean = true //bernilai true jika itu expert, bernilai false jika user
-
-        //Get user database
+        // Get user database
         if (userId != null) {
             userDatabase.child(userId).get().addOnSuccessListener {
                 //get displayName from database
@@ -88,7 +84,6 @@ class HomeActivity : AppCompatActivity() {
                 binding.tvWelcome.text = "Welcome,\n$displayName"
 
                 //set iv
-
                 profilePictureReference.downloadUrl.addOnSuccessListener {
                     imageURL = it.toString()
                     Glide.with(this).load(imageURL).apply(RequestOptions.circleCropTransform()).diskCacheStrategy(DiskCacheStrategy.ALL).into(binding.ivUserImage)
@@ -102,35 +97,6 @@ class HomeActivity : AppCompatActivity() {
             }.toString()
         }
 
-//        //Get expert database
-//        Log.e("status", "isExpert = $isExpert")
-//        if (isExpert) {
-//            if (userId != null) {
-//                expertDatabase.child(userId).get().addOnSuccessListener {
-//
-//                    //get displayName from database
-//                    displayName = it.child("username").value.toString()
-//
-//                    //set tvWelcome
-//                    binding.tvWelcome.text = "Welcome,\n$displayName"
-//
-//                    //set iv
-//
-//                    profilePictureReference.downloadUrl.addOnSuccessListener {
-//                        imageURL = it.toString()
-//                        Glide.with(this).load(imageURL).apply(RequestOptions.circleCropTransform())
-//                            .diskCacheStrategy(DiskCacheStrategy.ALL).into(binding.ivUserImage)
-//                    }
-//
-//                    Log.i("firebase", "Got value expert ${it.value}")
-//
-//                }.addOnFailureListener {
-//
-//                    Log.e("firebase", "Error getting data", it)
-//
-//                }.toString()
-//            }
-//        }
 
         // click
         // user image

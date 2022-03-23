@@ -7,6 +7,9 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2.ORIENTATION_HORIZONTAL
+import com.gdsc.gdsctoast.GDSCToast
+import com.gdsc.gdsctoast.util.ToastShape
+import com.gdsc.gdsctoast.util.ToastType
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -23,7 +26,9 @@ import com.nyautech.asha.model.User
 import com.nyautech.asha.ui.home.HomeActivity
 import com.nyautech.asha.ui.sign.SignInActivity
 import com.nyautech.asha.ui.sign.SignUpActivity
+import com.nyautech.asha.util.Constanta.RC_SIGN_IN
 
+@Suppress("DEPRECATION")
 class OnboardingActivity : AppCompatActivity() {
 
     private var titleList = mutableListOf<String>()
@@ -33,7 +38,6 @@ class OnboardingActivity : AppCompatActivity() {
 
 
     private lateinit var googleSignInClient: GoogleSignInClient
-    private var RC_SIGN_IN: Int = 24434
     private lateinit var mAuth : FirebaseAuth
     private lateinit var database: DatabaseReference
 
@@ -51,6 +55,18 @@ class OnboardingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        // onboarding
+        addToList("Panic Button","We help you to get the evidences you need",R.drawable.panic_button)
+        addToList("WriteUps","Know and learn yourself \nby exploring our writeups",R.drawable.onboarding2)
+        addToList("Confab","You can always speak to us, \nwe're here to support you",R.drawable.expert)
+
+        binding.vpOnboarding.apply {
+            adapter = ViewPagerAdapter(titleList,detailList,imagesList)
+            orientation = ORIENTATION_HORIZONTAL
+        }
+
+        binding.indicator.setViewPager(binding.vpOnboarding)
+
         // initialize firebase auth
         mAuth = Firebase.auth
 
@@ -64,18 +80,6 @@ class OnboardingActivity : AppCompatActivity() {
             .build()
 
         googleSignInClient = GoogleSignIn.getClient(this, gso)
-
-
-        addToList("Panic Button","We help you to get the evidences you need",R.drawable.panic_button)
-        addToList("WriteUps","Know and learn yourself \nby exploring our writeups",R.drawable.onboarding2)
-        addToList("Confab","You can always speak to us, \nwe're here to support you",R.drawable.onboarding3)
-
-        binding.vpOnboarding.apply {
-            adapter = ViewPagerAdapter(titleList,detailList,imagesList)
-            orientation = ORIENTATION_HORIZONTAL
-        }
-
-        binding.indicator.setViewPager(binding.vpOnboarding)
 
 
         // click
@@ -105,25 +109,34 @@ class OnboardingActivity : AppCompatActivity() {
         val signInIntent = googleSignInClient.signInIntent
         startActivityForResult(signInIntent, RC_SIGN_IN)
     }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
-            try {
-                // Google Sign In was successful, authenticate with Firebase
-                val account = task.getResult(ApiException::class.java)!!
-                Log.d(ContentValues.TAG, "firebaseAuthWithGoogle:" + account.id)
-                firebaseAuthWithGoogle(account.idToken!!)
-            } catch (e: ApiException) {
-                // Google Sign In failed, update UI appropriately
-                Log.w(ContentValues.TAG, "Google sign in failed", e)
+            val exception = task.exception
+
+            if (task.isSuccessful){
+                try {
+                    // Google Sign In was successful, authenticate with Firebase
+                    val account = task.getResult(ApiException::class.java)!!
+                    Log.d("Sign In Activity", "firebaseAuthWithGoogle:" + account.id)
+                    firebaseAuthWithGoogle(account.idToken!!)
+                } catch (e: ApiException) {
+                    // Google Sign In failed, update UI appropriately
+                    Log.w("Sign In Activity", "Google sign in failed", e)
+                }
+            } else {
+                Log.w("Sign In Activity", exception.toString())
             }
         }
     }
+
     private fun firebaseAuthWithGoogle(idToken: String) {
         val credential = GoogleAuthProvider.getCredential(idToken, null)
+
         mAuth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
@@ -138,7 +151,15 @@ class OnboardingActivity : AppCompatActivity() {
                                 Log.d(ContentValues.TAG, "signInWithCredential:success")
                                 updateUI()
                             } else{
-                                Toast.makeText(this, "Failed to register, pwease try again!", Toast.LENGTH_LONG).show()
+                                GDSCToast.showAnyToast(this) {
+                                    it.apply {
+                                        text = "Failed to register, pwease try again!"
+                                        duration = Toast.LENGTH_LONG
+                                        showLogo = true
+                                        toastType = ToastType.WARNING
+                                        toastShape = ToastShape.ROUNDED
+                                    }
+                                }
                             }
                         }
                     }
@@ -149,8 +170,10 @@ class OnboardingActivity : AppCompatActivity() {
                 }
             }
     }
+
     private fun updateUI() {
         val intent = Intent(applicationContext, HomeActivity::class.java)
         startActivity(intent)
+        finish()
     }
 }

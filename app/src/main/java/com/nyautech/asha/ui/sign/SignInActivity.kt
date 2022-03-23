@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast
+import com.gdsc.gdsctoast.GDSCToast
+import com.gdsc.gdsctoast.util.ToastShape
+import com.gdsc.gdsctoast.util.ToastType
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -65,12 +68,28 @@ class SignInActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
-                    Toast.makeText(this,"Login Success!",Toast.LENGTH_SHORT).show()
+                    GDSCToast.showAnyToast(this) {
+                        it.apply {
+                            text = "Login Success!"
+                            duration = Toast.LENGTH_LONG
+                            showLogo = true
+                            toastType = ToastType.SUCCESS
+                            toastShape = ToastShape.ROUNDED
+                        }
+                    }
                     startActivity(Intent(this, HomeActivity::class.java))
                     finishAffinity()
                 } else {
                     // If sign in fails, display a message to the user.
-                    Toast.makeText(this,"User does not exist!",Toast.LENGTH_SHORT).show()
+                    GDSCToast.showAnyToast(this) {
+                        it.apply {
+                            text = "User does not exist!"
+                            duration = Toast.LENGTH_LONG
+                            showLogo = true
+                            toastType = ToastType.WARNING
+                            toastShape = ToastShape.ROUNDED
+                        }
+                    }
                 }
             }
     }
