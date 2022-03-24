@@ -21,6 +21,7 @@ class ExploreActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        // Recycler View
         val articleAdapter = ArticleAdapter()
         articleAdapter.saveAllData(DataArticle.listOfArticle(this))
 
@@ -29,6 +30,7 @@ class ExploreActivity : AppCompatActivity() {
             layoutManager = LinearLayoutManager(this@ExploreActivity,LinearLayoutManager.VERTICAL,false)
         }
 
+        // Search Article
         binding.svExplore.apply {
             queryHint = resources.getString(R.string.article_text)
             setOnQueryTextListener(object : SearchView.OnQueryTextListener {
@@ -45,14 +47,14 @@ class ExploreActivity : AppCompatActivity() {
             })
         }
 
-
-
         // nav
         binding.icHome.setOnClickListener {
             startActivity(Intent(this,HomeActivity::class.java))
+            finishAffinity()
         }
         binding.icChat.setOnClickListener {
             startActivity(Intent(this,ConsultationActivity::class.java))
+            finishAffinity()
         }
     }
 }

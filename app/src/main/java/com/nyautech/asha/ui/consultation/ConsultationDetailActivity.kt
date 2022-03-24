@@ -2,12 +2,11 @@ package com.nyautech.asha.ui.consultation
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import com.nyautech.asha.R
 import com.nyautech.asha.adapter.ConsultationAdapter
 import com.nyautech.asha.databinding.ActivityConsultationDetailBinding
 import com.nyautech.asha.model.Expert
@@ -39,7 +38,7 @@ class ConsultationDetailActivity : AppCompatActivity() {
 
 
         // data
-        expertList = arrayListOf<Expert>()
+        expertList = arrayListOf()
         getExpertData()
 
 
@@ -47,7 +46,6 @@ class ConsultationDetailActivity : AppCompatActivity() {
         binding.rvCategory.apply {
             layoutManager = LinearLayoutManager(this@ConsultationDetailActivity,LinearLayoutManager.VERTICAL,false)
         }
-
 
         // nav
         binding.icArticle.setOnClickListener {
@@ -58,6 +56,8 @@ class ConsultationDetailActivity : AppCompatActivity() {
         }
     }
 
+
+    // Fun
     private fun getExpertData(){
         expertDatabase = FirebaseDatabase.getInstance("https://asha-21f6d-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("expert")
         expertDatabase.addValueEventListener(object : ValueEventListener {
@@ -68,34 +68,34 @@ class ConsultationDetailActivity : AppCompatActivity() {
                     for (postSnapshot in snapshot.children){
                         val currentExpert = postSnapshot.getValue(Expert::class.java)
 
-                        if (category.equals("Mental Health")){
+                        if (category == "Mental Health"){
                             if (currentExpert != null) {
                                 if (currentExpert.category.equals("Mental Health")){
-                                    expertList.add(currentExpert!!)
+                                    expertList.add(currentExpert)
                                 }
                             }
                         }
 
-                        if (category.equals("Sexual Health")){
+                        if (category == "Sexual Health"){
                             if (currentExpert != null) {
                                 if (currentExpert.category.equals("Sexual Health")){
-                                    expertList.add(currentExpert!!)
+                                    expertList.add(currentExpert)
                                 }
                             }
                         }
 
-                        if (category.equals("Komnas Perempuan")){
+                        if (category == "Komnas Perempuan"){
                             if (currentExpert != null) {
                                 if (currentExpert.category.equals("Komnas Perempuan")){
-                                    expertList.add(currentExpert!!)
+                                    expertList.add(currentExpert)
                                 }
                             }
                         }
 
-                        if (category.equals("Law Expert")){
+                        if (category == "Law Expert"){
                             if (currentExpert != null) {
                                 if (currentExpert.category.equals("Law Expert")){
-                                    expertList.add(currentExpert!!)
+                                    expertList.add(currentExpert)
                                 }
                             }
                         }

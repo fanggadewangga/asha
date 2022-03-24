@@ -28,6 +28,7 @@
         <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/drawable/ic_home_outlined.xml" value="0.1" />
         <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/drawable/ic_majesticons_phone_outgoing.xml" value="0.181" />
+        <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/drawable/ic_profile.xml" value="0.1805" />
         <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/drawable/message_sent_background.xml" value="0.2395" />
         <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/drawable/messsage_received_background.xml" value="0.2395" />
         <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/drawable/telephone_icon.xml" value="0.181" />
@@ -53,6 +54,9 @@
         <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/layout/item_onboarding.xml" value="0.22826086956521738" />
         <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/menu/bottom_nav_menu.xml" value="0.24166666666666667" />
         <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2475" />
+        <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/mipmap-anydpi-v26/ic_launcher_asha.xml" value="0.1805" />
+        <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/mipmap-anydpi-v26/ic_launcher_asha_round.xml" value="0.1805" />
+        <entry key="..\:/Dev/AppPractice/Asha/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1805" />
         <entry key="..\:/Users/user/AndroidStudioProjects/asha4/app/src/main/res/layout/activity_chat.xml" value="0.1" />
         <entry key="..\:/Users/user/AndroidStudioProjects/asha4/app/src/main/res/layout/activity_consultation.xml" value="0.234375" />
         <entry key="..\:/Users/user/AndroidStudioProjects/asha4/app/src/main/res/layout/activity_consultation_detail.xml" value="0.234375" />

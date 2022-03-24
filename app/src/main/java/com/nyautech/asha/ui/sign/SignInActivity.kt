@@ -32,34 +32,35 @@ class SignInActivity : AppCompatActivity() {
         signInBinding.btnLogin.setOnClickListener {
             signIn()
         }
-        //To Register
+        // To Register
         signInBinding.tvToRegister.setOnClickListener {
             startActivity(Intent(this, SignUpActivity::class.java))
         }
     }
+
+    // get login data
     private fun signIn() {
 
-        // get data login
         val email = signInBinding.edtEmail.text.toString()
         val password = signInBinding.edtPassword.text.toString()
 
         if (email.isEmpty()){
-            signInBinding.edtEmail.setError("Email is required!")
+            signInBinding.edtEmail.error = "Email is required!"
             signInBinding.edtEmail.requestFocus()
             return
         }
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-            signInBinding.edtEmail.setError("Please input valid email!")
+            signInBinding.edtEmail.error = "Please input valid email!"
             signInBinding.edtEmail.requestFocus()
             return
         }
         if (password.isEmpty()){
-            signInBinding.edtPassword.setError("Password is required!")
+            signInBinding.edtPassword.error = "Password is required!"
             signInBinding.edtPassword.requestFocus()
             return
         }
         if (password.length < 6){
-            signInBinding.edtPassword.setError("Minimal password length should be 6 characters!")
+            signInBinding.edtPassword.error = "Minimal password length should be 6 characters!"
             signInBinding.edtPassword.requestFocus()
             return
         }
@@ -86,7 +87,7 @@ class SignInActivity : AppCompatActivity() {
                             text = "User does not exist!"
                             duration = Toast.LENGTH_LONG
                             showLogo = true
-                            toastType = ToastType.WARNING
+                            toastType = ToastType.ERROR
                             toastShape = ToastShape.ROUNDED
                         }
                     }

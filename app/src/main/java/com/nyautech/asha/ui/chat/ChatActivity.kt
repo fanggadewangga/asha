@@ -1,13 +1,10 @@
 package com.nyautech.asha.ui.chat
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Message
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import com.nyautech.asha.R
 import com.nyautech.asha.adapter.MessageAdapter
 import com.nyautech.asha.databinding.ActivityChatBinding
 
@@ -19,8 +16,8 @@ class ChatActivity : AppCompatActivity() {
     private lateinit var database : DatabaseReference
 
     // to create a unique room for peer of sender and receiver
-    var receiverRoom: String? = null
-    var senderRoom: String? = null
+    private var receiverRoom: String? = null
+    private var senderRoom: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -34,7 +31,7 @@ class ChatActivity : AppCompatActivity() {
         val userId = FirebaseAuth.getInstance().currentUser?.uid
 
         // firebase
-        database = FirebaseDatabase.getInstance("https://asha-21f6d-default-rtdb.asia-southeast1.firebasedatabase.app").getReference()
+        database = FirebaseDatabase.getInstance("https://asha-21f6d-default-rtdb.asia-southeast1.firebasedatabase.app").reference
 
         // create a unique chat room for sender and receiver
         senderRoom = expertId + userId

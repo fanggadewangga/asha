@@ -30,6 +30,18 @@ class ConsultationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        // firebase
+        // auth
+        mAuth = FirebaseAuth.getInstance()
+
+        expertList = arrayListOf<Expert>()
+        getExpertData()
+
+        //rv
+        binding.rvChat.apply {
+            layoutManager = LinearLayoutManager(this@ConsultationActivity,LinearLayoutManager.VERTICAL,false)
+        }
+
         // click
         binding.cvMentalHealth.setOnClickListener {
             val intent = Intent(this,ConsultationDetailActivity::class.java)
@@ -52,25 +64,19 @@ class ConsultationActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // firebase
-        // auth
-        mAuth = FirebaseAuth.getInstance()
 
-        expertList = arrayListOf<Expert>()
-        getExpertData()
-
-        //rv
-        binding.rvChat.apply {
-            layoutManager = LinearLayoutManager(this@ConsultationActivity,LinearLayoutManager.VERTICAL,false)
-        }
         // nav
         binding.icArticle.setOnClickListener {
             startActivity(Intent(this,ExploreActivity::class.java))
+            finishAffinity()
         }
         binding.icHome.setOnClickListener {
             startActivity(Intent(this,HomeActivity::class.java))
+            finishAffinity()
         }
     }
+
+    // fun
     private fun getExpertData(){
         expertDatabase = FirebaseDatabase.getInstance("https://asha-21f6d-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("expert")
         expertDatabase.addValueEventListener(object : ValueEventListener{

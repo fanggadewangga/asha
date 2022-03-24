@@ -11,7 +11,7 @@ import com.nyautech.asha.util.Constanta.EXTRA_ARTICLE
 
 class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder>() {
 
-    val listArticle = ArrayList<Article>()
+    private val listArticle = ArrayList<Article>()
 
     fun saveAllData(data : List<Article>){
         listArticle.apply {

@@ -43,7 +43,7 @@ object DataArticle {
     }
 
     fun searchArticle(query : String, context: Context) : ArrayList<Article>{
-        var searchResult = ArrayList<Article>()
+        val searchResult = ArrayList<Article>()
 
         listOfArticle(context).forEach {
             if (it.title.contains(query)){

@@ -46,38 +46,38 @@ class SignUpActivity : AppCompatActivity() {
         val trustedContact = signUpBinding.edtContact.text.toString()
 
         if(name.isEmpty()){
-            signUpBinding.edtName.setError("Full name is required!")
+            signUpBinding.edtName.error = "Full name is required!"
             signUpBinding.edtName.requestFocus()
             return
         }
         if (email.isEmpty()){
-            signUpBinding.edtEmail.setError("Email is required!")
+            signUpBinding.edtEmail.error = "Email is required!"
             signUpBinding.edtEmail.requestFocus()
             return
         }
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-            signUpBinding.edtEmail.setError("Please input valid email!")
+            signUpBinding.edtEmail.error = "Please input valid email!"
             signUpBinding.edtEmail.requestFocus()
             return
         }
         if (username.isEmpty()){
-            signUpBinding.edtUsername.setError("Email is required!")
+            signUpBinding.edtUsername.error = "Email is required!"
             signUpBinding.edtUsername.requestFocus()
             return
         }
 
         if (password.isEmpty()){
-            signUpBinding.edtPassword.setError("Password is required!")
+            signUpBinding.edtPassword.error = "Password is required!"
             signUpBinding.edtPassword.requestFocus()
             return
         }
         if (password.length < 6){
-            signUpBinding.edtPassword.setError("Minimal password length should be 6 characters!")
+            signUpBinding.edtPassword.error = "Minimal password length should be 6 characters!"
             signUpBinding.edtPassword.requestFocus()
             return
         }
         if (trustedContact.isEmpty()){
-            signUpBinding.edtContact.setError("Password is required!")
+            signUpBinding.edtContact.error = "Password is required!"
             signUpBinding.edtContact.requestFocus()
             return
         }
@@ -92,13 +92,13 @@ class SignUpActivity : AppCompatActivity() {
                                 startActivity(Intent(this, SignInActivity :: class.java))
                                 finishAffinity()
                             } else{
-                                Toast.makeText(this, "Failed to register, pwease try again!", Toast.LENGTH_LONG).show()
+                                Toast.makeText(this, "Failed to register, please try again!", Toast.LENGTH_LONG).show()
                             }
                         }
                     }
                 } else {
                     // If sign in fails, display a message to the user.
-                    Toast.makeText(this, "Failed to sign in, pwease try again! ${task.exception}", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "Failed to sign in, please try again! ${task.exception}", Toast.LENGTH_LONG).show()
                 }
             }
     }

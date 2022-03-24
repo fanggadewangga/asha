@@ -15,9 +15,10 @@
 
         <ImageView
             android:id="@+id/iv_chat_img"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:src="@drawable/img_profile"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_profile"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
 

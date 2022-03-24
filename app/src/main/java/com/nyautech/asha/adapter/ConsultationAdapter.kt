@@ -7,11 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.ValueEventListener
 import com.nyautech.asha.R
 import com.nyautech.asha.model.Expert
-import com.nyautech.asha.model.User
 import com.nyautech.asha.ui.chat.ChatActivity
 
 class ConsultationAdapter(val context: Context, private val expertList: ArrayList<Expert>): RecyclerView.Adapter<ConsultationAdapter.ConsultationViewHolder>() {

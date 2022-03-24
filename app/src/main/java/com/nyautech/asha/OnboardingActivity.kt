@@ -57,7 +57,7 @@ class OnboardingActivity : AppCompatActivity() {
 
         // onboarding
         addToList("Panic Button","We help you to get the evidences you need",R.drawable.panic_button)
-        addToList("WriteUps","Know and learn yourself \nby exploring our writeups",R.drawable.onboarding2)
+        addToList("WriteUps","Know and learn yourself \nby exploring our writeups",R.drawable.writeups)
         addToList("Confab","You can always speak to us, \nwe're here to support you",R.drawable.expert)
 
         binding.vpOnboarding.apply {
@@ -144,7 +144,7 @@ class OnboardingActivity : AppCompatActivity() {
                     val user = User(currentUser?.displayName, currentUser?.displayName,
                         currentUser?.phoneNumber
                     )
-                    mAuth.currentUser?.let {
+                    mAuth.currentUser?.let { it ->
                         database.child("users").child(it.uid).setValue(user).addOnCompleteListener {
                             if (task.isSuccessful){
 //                                startActivity(Intent(this, SignInActivity :: class.java))
