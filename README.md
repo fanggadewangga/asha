@@ -1,6 +1,6 @@
-# Asha
+# asha
 
-Asha, which stands for “anti sexual-harassment”, is an Android-based mobile application that uses Google's firebase technology that focuses on sexual education, prevention and handling of cases of sexual violence in accordance with SDGS points 4 and 5. 
+asha, which stands for “anti sexual-harassment”, is an Android-based mobile application that uses Google's firebase technology that focuses on sexual education, prevention and handling of cases of sexual violence in accordance with SDGS points 4 and 5. 
 
 ### Features
 
@@ -11,8 +11,8 @@ Asha, which stands for “anti sexual-harassment”, is an Android-based mobile 
 
 ### Technology and Tools
 
-* Frontend : 
-* Backend
+* Frontend : XML
+* Backend : Firebase
 * Programming Language : Kotlin
 * Tools : Android Studio
 * Google Technology : 
